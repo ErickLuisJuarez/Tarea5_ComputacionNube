@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Formulario de Auto</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+
+    <center><h1 th:text="${producto.id != null ? 'Editar Auto' : 'Nuevo Auto'}"></h1></center>
+    
+    <form th:action="@{/form}" th:object="${producto}" method="post" style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+        <input type="hidden" th:field="*{id}" />
+        <label>Marca:</label>
+        <input type="text" th:field="*{marca}" required />
+        
+        <label>Modelo:</label>
+        <input type="text" th:field="*{modelo}" required />
+        
+        <label>Año:</label>
+        <input type="number" th:field="*{anio}" required />
+        
+        <label>Precio:</label>
+        <input type="number" step="0.01" th:field="*{precio}" required />
+        
+        <button type="submit" style="padding: 10px; background: #009879; color: white; border: none; cursor: pointer;">Guardar</button>
+        <a th:href="@{/listar}" style="text-align: center;">Cancelar</a>
+    </form>
+
+</body>
+</html>

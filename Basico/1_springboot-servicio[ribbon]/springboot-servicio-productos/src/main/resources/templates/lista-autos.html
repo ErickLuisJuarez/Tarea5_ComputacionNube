@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Lista de Modelos de Autos</title>
+    <style>
+      .tabla-formato {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+      }
+      .tabla-formato thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+      }
+      .tabla-formato th, .tabla-formato td {
+        padding: 12px 15px;
+      }
+      .tabla-formato tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+      .tabla-formato tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      .tabla-formato tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+    </style>
+</head>
+<body>
+
+<div class="container">
+	<center><a th:href="@{/form}" style="padding: 10px; background: #009879; color: white; text-decoration: none; border-radius: 5px;">Añadir Nuevo Auto</a></center>
+
+	<table class="tabla-formato mt-3">    
+	    <thead>
+	        <tr>
+	            <th width="10%">ID</th>
+	            <th>Marca</th>
+	            <th>Modelo</th>
+	            <th>Año</th>
+	            <th>Precio</th>
+	            <th>Acciones</th> 
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr data-th-each="producto : ${productos}"> 
+	            <td data-th-text="${producto.id}">1</td>
+	            <td data-th-text="${producto.marca}">Toyota</td>
+	            <td data-th-text="${producto.modelo}">Corolla</td>
+	            <td data-th-text="${producto.anio}">2024</td>
+	            <td data-th-text="${#numbers.formatCurrency(producto.precio)}">$0.00</td>
+	            <td>
+	                <a th:href="@{/form/} + ${producto.id}">Editar</a> | 
+	                <a th:href="@{/eliminar/} + ${producto.id}" onclick="return confirm('¿Estás seguro?');">Eliminar</a>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+
+</body>
+</html>
