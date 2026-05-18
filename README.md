@@ -4,7 +4,7 @@
 
 ### Integrantes:
 * **Luis Mario Solares Ramos** - No.cuenta: 321057110
-* **Erick Luis Juarez**
+* **Erick Luis Juarez** - No.cuenta 321140153
 
 ---
 
